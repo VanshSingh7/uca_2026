@@ -1,0 +1,3 @@
+Learning Linux Command
+stat()
+ 
