@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch Users using Web Worker</title>
+</head>
+<body>
+
+<h2>Open the browser console (F12)</h2>
+
+<script>
+    const worker = new Worker("../js/worker.js");
+
+    worker.postMessage("fetch");
+
+    worker.onmessage = function (event) {
+        if (event.data.error) {
+            console.error(event.data.error);
+        } else {
+            event.data.forEach(user => {
+                console.log(`${user.name} - ${user.status}`);
+            });
+        }
+    };
+
+    worker.onerror = function (err) {
+        console.error("Worker Error:", err.message);
+    };
+</script>
+
+</body>
+</html>
