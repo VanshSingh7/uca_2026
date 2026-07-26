@@ -9,7 +9,9 @@
 
 <h2>Open the browser console (F12)</h2>
 
-<script>
+<!-- on console -->
+ 
+<!-- <script>
     const worker = new Worker("../js/worker.js");
 
     worker.postMessage("fetch");
@@ -27,7 +29,50 @@
     worker.onerror = function (err) {
         console.error("Worker Error:", err.message);
     };
-</script>
+</script> -->
 
+
+
+<!-- on UI -->
+
+<h2>Users List</h2>
+
+<div id="users">Loading...</div>
+
+<script>
+    const usersDiv = document.getElementById("users");
+
+    const worker = new Worker("../js/worker.js");
+
+    worker.postMessage("fetch");
+
+    worker.onmessage = function (event) {
+
+        if (event.data.error) {
+            usersDiv.innerHTML = event.data.error;
+            return;
+        }
+
+        usersDiv.innerHTML = "";
+
+        event.data.forEach(user => {
+
+            const p = document.createElement("p");
+
+            p.textContent = `${user.name} - ${user.active ? "Active" : "Inactive"}`;
+
+            usersDiv.appendChild(p);
+
+        });
+
+    };
+
+    worker.onerror = function () {
+
+        usersDiv.innerHTML = "Worker Error";
+
+    };
+
+</script>
 </body>
 </html>
