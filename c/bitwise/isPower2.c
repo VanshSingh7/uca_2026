@@ -5,7 +5,7 @@ int isPower2(int x) {
 }
 
 int main() {
-    printf("isPower2(8) = %d\n", isPower2(8));
-    printf("isPower2(5) = %d\n", isPower2(5));
+    printf("isPower2(24) = %d\n", isPower2(24));
+    printf("isPower2(1024) = %d\n", isPower2(1024));
     return 0;
 }
