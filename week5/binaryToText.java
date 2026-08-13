@@ -1,5 +1,4 @@
 package week5;
-import java.util.*;
 
 public class binaryToText {
 
