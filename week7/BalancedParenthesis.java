@@ -1,6 +1,6 @@
 import java.util.*;
 
-class BlanacedParenthesis{
+class BalancedParenthesis{
     static boolean balancedParenthesis(String str){
         Stack<Character> stack = new Stack<>();
 
@@ -27,7 +27,7 @@ class BlanacedParenthesis{
         String str1 = "[()]{}{()()}";
         boolean res1 = balancedParenthesis(str1);
         System.out.println(str1 + ": " + res1); 
-        
+
         String str2 = "[(])";
         boolean res2 = balancedParenthesis(str2);
         System.out.println(str2 + ": " + res2);
